@@ -29,19 +29,24 @@ with open(csvpath) as csvfile:
     print(" ")
     print("-----------------------------")
     print(" ")
-    print(f"Months: {int(months)}")
+    print(f"Total Months: {int(months)}")
+    print (" ")
 
-#for row in csvreader:
-    #profits_losses.append(row[1])
-    #sum_prof_loss= 0
-    #sum_prof_loss = sum(int(number)for number in profits_losses)
-    #print(f"The total is: {sum_prof_loss}")
 
 #Sum as funciton
 def csv_total(st):
     total = 0
-    with open(st)as a:
+    with open(st) as a:
+        csvreader = csv.reader(a)
+        next(csvreader)
         for line in csvreader:
-            total=total+int(line[1])
-            return total
-        print("The total is: {csv_total}") 
+            total += int(line[1])
+
+    return total
+
+total = csv_total(csvpath)
+print(f"Total: ${total}")
+print(" ")
+
+#Calculate Average
+
