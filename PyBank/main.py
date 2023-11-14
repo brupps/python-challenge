@@ -84,9 +84,18 @@ print(f"Greatest Increase in Profits:  {greatest_decrease_date} (${greatest_decr
 print(" ")
 
 
+#Create text file
+file = open("main_text.txt", 'w')
+
+#Write values to text file
+file.write ("\nTotal Months: " + str(line_count))
+file.write ("\nTotal: $" + str(total))
+file.write ("\nAverage Change: $" + str(average_change))
+file.write ("\nGreatest Increase: $" + str(greatest_increase))
+file.write ("\nGreatest Decrease: $" + str(greatest_decrease))
+
+#Close text file
+file.close()
 
 
 
-
-
-    
