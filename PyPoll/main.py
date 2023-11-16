@@ -9,7 +9,8 @@ candidates =[]
 votes_per_candidate = []
 winner =[]
 percentage =[]
-names = []
+name = []
+name_list = []
 
 #Set Up Output print area
 print("Election Results")
@@ -37,10 +38,21 @@ print(" ")
 for i in range(0, line_count):
     candidates = data[i][2]
     votes_per_candidate.append(candidates)
-    if candidates not in names:
-        names.append(candidates)
-names = len(candidates)
+    if candidates not in name_list:
+        name_list.append(candidates)
+name_count = len(name_list)
+
   
-#Calculate total number of votes for each candidate
-#for i in range(0, names)
+#Calculate total number of votes and percentage of votes for each candidate
+for i in range(0, name_count):
+    name = name_list[i]
+    votes.append(votes_per_candidate.count(name))
+    votepercent = votes[i]/line_count
+    percentage.append(votepercent)
+   # for i in range (0,candidates):
+    #    print(f"{candidates[i]}: {percentage[i]: .3% ({votes_per_candidate}[i]:,)}")
+
+winner = votes.index(max(votes))
+
+print(winner)
     

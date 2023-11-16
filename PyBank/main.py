@@ -21,12 +21,15 @@ print(" ")
 print("-----------------------------")
 print(" ")
 
+#Open csv file and set the line count to 0
 with open(csvpath, 'r') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     line_count = 0
-    #print(csv_reader)
+
+    #Ignore header
     csv_header = next(csv_reader)
     
+    #Calculate the line count to figure out total number of months
     for row in csv_reader:
         months.append(row[0])
         profits_losses.append(int(row[1]))
@@ -35,6 +38,7 @@ with open(csvpath, 'r') as csv_file:
             line_count += 1
         else:
             line_count += 1
+
 #Print Number of months
 print(f'Total Months: {line_count} ')
 print(" ")
@@ -85,12 +89,21 @@ print(" ")
 
 
 #Create text file
-file = open("main_text.txt", 'w')
+file = open(os.path.join("Analysis", "financial_analysis.txt"), "w")
 
 #Write values to text file
+file.write ("\nFinancial Analysis")
+file.write ("\n-------------------------")
 file.write ("\nTotal Months: " + str(line_count))
 file.write ("\nTotal: $" + str(total))
-file.write ("\nAverage Change: $" + str(average_change))
+for i in range (1, len(months)):
+        change = profits_losses[i]-profits_losses[i-1]
+        changes.append(change)
+        
+        average_change = sum(changes)/len(changes)
+
+file.write(f"Average Change is ({average_change:.2f})")
+#file.write ("\nAverage Change: $" + str(average_change))
 file.write ("\nGreatest Increase: $" + str(greatest_increase))
 file.write ("\nGreatest Decrease: $" + str(greatest_decrease))
 
