@@ -76,6 +76,7 @@ file.write ("\n-------------------------")
 file.write("\n  ")
 for i in range (0, name_count):
     file.write(f"\n{name_list[i]}: {percentage[i]: .3%} ({votes[i]:,})")
+file.write("\n  ")
 file.write ("\n-------------------------")
 file.write("\n ")
 file.write(f"\nWinner: {name_list[winner]}")
