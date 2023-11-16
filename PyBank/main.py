@@ -102,8 +102,7 @@ for i in range (1, len(months)):
         
         average_change = sum(changes)/len(changes)
 
-file.write(f"Average Change is ({average_change:.2f})")
-#file.write ("\nAverage Change: $" + str(average_change))
+file.write(f"\nAverage Change is ({average_change:.2f})")
 file.write ("\nGreatest Increase: $" + str(greatest_increase))
 file.write ("\nGreatest Decrease: $" + str(greatest_decrease))
 

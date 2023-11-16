@@ -27,7 +27,7 @@ with open(csvpath, 'r') as csv_file:
     line_count = len(data)
 
 
-#Print Number of months
+#Print the total Number of votes
 print(f'Total Votes: {line_count} ')
 print(" ")
 print("-----------------------------")
@@ -43,16 +43,44 @@ for i in range(0, line_count):
 name_count = len(name_list)
 
   
-#Calculate total number of votes and percentage of votes for each candidate
+#Calculate total number of votes and percentage of votes for each candidate 
 for i in range(0, name_count):
     name = name_list[i]
     votes.append(votes_per_candidate.count(name))
     votepercent = votes[i]/line_count
     percentage.append(votepercent)
-   # for i in range (0,candidates):
-    #    print(f"{candidates[i]}: {percentage[i]: .3% ({votes_per_candidate}[i]:,)}")
+
+#Print Names and Vote Counts and Percentage to 3 decimal places
+for i in range (0, name_count):
+    print(f"{name_list[i]}: {percentage[i]: .3%} ({votes[i]:,})")
+
 
 winner = votes.index(max(votes))
+print(" ")
+print("-----------------------------")
+print(" ")
+print(f"Winner: {name_list[winner]}")
+print(" ")
+print("-----------------------------")
 
-print(winner)
-    
+#Create text file
+file = open(os.path.join("Analysis", "election_analysis.txt"), "w")
+#Write values to text file
+file.write ("\nElection Analysis")
+file.write("\n  ")
+file.write ("\n-------------------------")
+file.write("\n  ")
+file.write ("\nTotal Votes: " + str(line_count))
+file.write("\n  ")
+file.write ("\n-------------------------")
+file.write("\n  ")
+for i in range (0, name_count):
+    file.write(f"\n{name_list[i]}: {percentage[i]: .3%} ({votes[i]:,})")
+file.write ("\n-------------------------")
+file.write("\n ")
+file.write(f"\nWinner: {name_list[winner]}")
+file.write("\n  ")
+file.write ("\n-------------------------")
+
+#Close text file
+file.close()   
